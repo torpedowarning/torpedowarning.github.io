@@ -6,9 +6,6 @@
 <meta name="keywords" content="_文章检索" />
 <meta name="description" content="文章检索" />
 <link rel="archives" href="#" />
-</head>
-<body>
-
 <style type="text/css">
 body{ margin:0px auto; text-align:center; background-color:#f1f1f1;font-family:sans-serif;}
 a:link {color: #1b1b1b; text-decoration:none;}
@@ -28,6 +25,16 @@ a:active {color: #1b1b1b;}
 .content { padding: 10px; text-indent: 2em; text-align:left; font-size:14px; }
 .foot{height:59px;  overflow:hidden; text-align:right; padding-right:11px; font-size:14px; padding-top:20px; background:url(./images/fbg.jpg) no-repeat; margin-top:13px}
 </style>
+<script type="text/javascript">
+	function do_search(){ 
+	var keywords=document.getElementById("keywords").value;
+	window.location="./search.html?action=done&keyword="+keywords;
+}
+</script>
+</head>
+<body>
+
+
 <div class="main">
 <div class="head"><div class="barnner"><h1>山那羊文化记录册&nbsp;之&nbsp;壮族分册</h1>
 <p>在中国南部，北回归线附近的喀什特地貌区，居住着一个民族：壮族。由于社会层面上的同化，不断流失民族文化。为此，尽可能的在这里，将这个民族的点滴记录于此。</p>
@@ -38,12 +45,7 @@ a:active {color: #1b1b1b;}
 <a href="navigation.html">导航</a>
 </div>
 <br/>
-<script type="text/javascript">
-	function do_search(){ 
-	var keywords=document.getElementById("keywords").value;
-	window.location="./search.html?action=done&keyword="+keywords;
-}
-</script>
+
 文章检索 <input type="text" value="keywords" id="keywords" size="47"  onkeydown="if(event.keyCode==13)do_search();"/>
 <input type="button" value="搜索"  onclick="do_search()"/>
 </h1>
