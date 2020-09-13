@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>untitle</title>
+
+<style type="text/css">
+.main{margin:0 auto; width:360px; font-family:"ËÎÌו";}
+</style>
+</head>
+
+<body>
+
+<?php
+$path = './pwd';
+$cipher = MCRYPT_DES;
+$modes = MCRYPT_MODE_ECB;
+
+if(! is_dir($path) )
+{
+	@mkdir($path);
+	die('init<br>');
+}
+ if($_POST['action'] == 'done' && $_POST['do'] == 'de')
+ {
+ 		$key = $_POST['key'];
+		$dir = opendir($path);
+		$i = 0;
+		$arr =  array();
+		while (($filename = readdir($dir)) !== false)
+  		{
+				if ($filename != "."  &&  $filename != "..")
+				{
+						$arr[$i] = $filename;
+  						$i++;
+				}
+				//echo "filename: " . $filename . "<br />";
+  		}
+  		closedir($dir);
+
+  		if($i == 0)
+  		{
+  				$str_decrypt = 'input';
+  		}
+  		else
+  		{
+				rsort($arr);
+  				//print_r($arr);
+  				$str_encrypt = file_get_contents($path.'/'.$arr[0]);
+
+  				//echo "str_encrypt = [$str_encrypt] <br/>";
+  				$iv = mcrypt_create_iv(mcrypt_get_iv_size($cipher,$modes),MCRYPT_RAND);
+  				$str_decrypt = rtrim(mcrypt_decrypt($cipher,$key,$str_encrypt,$modes,$iv),"\0");
+  				//echo "str_decrypt = [".rtrim($str_decrypt,"\0")."] <br/>";
+  		}
+ ?>
+<div class="main">
+<form name="input" action="pwdr.php" method="post">
+key:<input type="password" name="key" value = "<?=$key?>"/><br>
+de<input type="radio" name="do" value="de" />
+en<input type="radio" name="do" value="en" checked="checked" />
+<br>
+<textarea rows="16" cols="40" name="content"><?=$str_decrypt?></textarea><br>
+<input type="hidden" name="action" value="done" />
+<input type="submit" value="submit" /><br>
+</form>
+</div>
+ <?php
+ }
+elseif($_POST['action'] == 'done' && $_POST['do'] == 'en')
+{
+		 	$file = fopen($path.'/'.time(),'w');
+		 	$key = $_POST['key'];
+		 	$content = $_POST['content'];
+		 	$iv = mcrypt_create_iv(mcrypt_get_iv_size($cipher,$modes),MCRYPT_RAND);
+		 	$str_encrypt = mcrypt_encrypt($cipher,$key,$content,$modes,$iv);
+
+			fwrite($file,$str_encrypt);
+			fclose($file);
+?>
+<div class="main">
+<form name="input" action="pwdr.php" method="post">
+key:<input type="password" name="key" value = "<?=$key?>"/><br>
+de<input type="radio" name="do" value="de" checked="checked"/>
+en<input type="radio" name="do" value="en"  />
+<br>
+<textarea rows="16" cols="40" name="content"></textarea><br>
+<input type="hidden" name="action" value="done" />
+<input type="submit" value="submit" /><br>
+</form>
+</div>
+<?php
+}
+else
+{
+?>
+
+<div class="main">
+<form name="input" action="pwdr.php" method="post">
+key:<input type="password" name="key" value=""/><br>
+de<input type="radio" name="do" value="de" checked="checked"/>
+en<input type="radio" name="do" value="en" />
+<br>
+<textarea rows="16" cols="40" name="content"></textarea><br>
+<input type="hidden" name="action" value="done" />
+<input type="submit" value="submit" /><br>
+</form>
+</div>
+
+<?php
+}
+?>
+
+
+
+</body>
+</html>

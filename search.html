@@ -2,9 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>_检索_山那羊壮族文化记录册</title>
+<title>_山那羊壮族文化记录册</title>
 <meta name="keywords" content="_文章检索" />
-<meta name="description" content="文章检索" />
+<meta name="description" content="_文章检索" />
 <link rel="archives" href="#" />
 <style type="text/css">
 body{ margin:0px auto; text-align:center; background-color:#f1f1f1;font-family:sans-serif;}
@@ -25,30 +25,37 @@ a:active {color: #1b1b1b;}
 .content { padding: 10px; text-indent: 2em; text-align:left; font-size:14px; }
 .foot{height:59px;  overflow:hidden; text-align:right; padding-right:11px; font-size:14px; padding-top:20px; background:url(./images/fbg.jpg) no-repeat; margin-top:13px}
 </style>
+
 <script type="text/javascript">
 	function do_search(){ 
 	var keywords=document.getElementById("keywords").value;
-	window.location="./search.html?action=done&keyword="+keywords;
+	window.location=window.location.pathname+"?keywords="+keywords;
 }
 </script>
+
 </head>
 <body>
 
 
+
+
 <div class="main">
-<div class="head"><div class="barnner"><h1>山那羊文化记录册&nbsp;之&nbsp;壮族分册</h1>
-<p>在中国南部，北回归线附近的喀什特地貌区，居住着一个民族：壮族。由于社会层面上的同化，不断流失民族文化。为此，尽可能的在这里，将这个民族的点滴记录于此。</p>
-</div></div>
+	<div class="head">
+	<div class="barnner">
+		<h1>山那羊壮族文化记录册&nbsp;之&nbsp;壮族分册</h1>
+		<p>在中国南部，北回归线附近的喀什特地貌区，居住着一个民族：壮族。由于社会层面上的同化，不断流失民族文化。为此，尽可能的在这里，将这个民族的点滴记录于此。</p>
+	</div>
+	</div>
+	
+	
 <div class="nav">
-当前位置：<a href="#">文章检索</a>
-&nbsp;&nbsp;<a href="./index.html">首页</a>&nbsp;&nbsp;
-<a href="navigation.html">导航</a>
+当前位置：<a href="javascript:void(0)">文章检索</a> &nbsp;&nbsp;<a href="./index.html">首页</a>&nbsp;&nbsp;<a href="./navigation.html">导航</a>
 </div>
 <br/>
 
-文章检索 <input type="text" value="keywords" id="keywords" size="47"  onkeydown="if(event.keyCode==13)do_search();"/>
+文章检索 <input type="text" value="" id="keywords" size="47"  onkeydown="if(event.keyCode==13)do_search();"/>
 <input type="button" value="搜索"  onclick="do_search()"/>
-
+</h1>
 <hr/>
 <div class="content">
 <br/><h2>检索结果</h2><br/>
@@ -59,23 +66,10 @@ a:active {color: #1b1b1b;}
   <th>&nbsp;&nbsp;来源</th>
   <th>&nbsp;&nbsp;发布日期</th>
 </tr>
-<tr>
-  <td>【<a href="./category/23.html" target="_blank">山丘与深林</a>】</td>
-  <td>【<a href="./article/212.html" target="_blank">广西那坡壮族活化石——“黑衣壮”</a>】</td>
-  <td>【国际在线】</td>
-  <td>【14年08月15日 05:44】</td>
-</tr>
-
-
 </table>
-
-<br/><br/>
-
 </div>
-<br> 
-
-<div class="foot">
-&copy;sanayard.com&nbsp;&nbsp;山那羊&copy;民族文化记录网站&nbsp;2011-2020</div>
+	
+<div class="foot">&copy;sanayard.com&nbsp;&nbsp;文化记录册&nbsp;2011-2020</div>
 </div>
 </body>
 </html>
